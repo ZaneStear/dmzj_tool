@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">dmzjtool</string>
+    <string name="open_drawer">open drawer</string>
+    <string name="close_drawer">close drawer</string>
+    <string name="use">How To Use</string>
+    <string name="novel_name">生成小说文件的名称</string>
+    <string name="final_path">生成路径（默认：根目录/0dmzj/）</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:text="怎么使用？"
+        android:textColor="#213721"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:id="@+id/t2"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t1"
+        android:text="1-先在动漫之家下载想要提取的小说\n\n2-输入名称，点纸飞机，进入选择界面选择\n\n3-筛选，最后生成，生成位置：根目录/0_fetch" />
+
+    <TextView
+        android:id="@+id/t3"
+        android:textColor="#213721"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/t2"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="为什么要删除已下载小说" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:id="@+id/t4"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t3"
+        android:text="动漫之家下载的小说太多的话，每次提取都要手动筛选\n\n建议先清空原来下载的小说，再提取" />
+
+    <View
+        android:layout_below="@+id/t4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
+
+</RelativeLayout>
