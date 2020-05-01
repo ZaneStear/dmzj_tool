@@ -55,7 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();//init控件
         checkWritePermission();//申请权限
-
+        //首次启动
+        if (FileUnit.isFirstLaunch(this)) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 
     //最主要部分

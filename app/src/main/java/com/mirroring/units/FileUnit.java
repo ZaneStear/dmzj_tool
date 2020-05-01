@@ -1,5 +1,8 @@
 package com.mirroring.units;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FileUnit {
+    private static SharedPreferences sharedPreferences;
+
     /**
      * 创建文件夹
      * @param path 文件夹路径
@@ -142,5 +147,18 @@ public class FileUnit {
      */
     public static boolean exists(String path) {
         return new File(path).exists();
+    }
+
+    public static boolean isFirstLaunch(Context context) {
+        if (sharedPreferences == null) {
+            sharedPreferences = context.getSharedPreferences("first", Context.MODE_PRIVATE);
+        }
+        if (sharedPreferences.getBoolean("isFirstLaunch", true)) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isFirstLaunch", false);
+            editor.apply();
+            return true;
+        }
+        return false;
     }
 }
