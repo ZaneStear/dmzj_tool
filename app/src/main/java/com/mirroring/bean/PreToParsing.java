@@ -41,6 +41,10 @@ public class PreToParsing {
         return needParsing;
     }
 
+    public static void clearNeedParsing() {
+        needParsing.clear();
+    }
+
     /**
      * 罗列needParsing
      */

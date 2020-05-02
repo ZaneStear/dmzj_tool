@@ -34,6 +34,7 @@ import com.mirroring.bean.Paths;
 import com.mirroring.bean.PreToParsing;
 import com.mirroring.units.FileUnit;
 import com.mirroring.units.HttpUnits;
+import com.mirroring.units.StringUnits;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FileUnit.ListFiles(Paths.getPaths().getDmzjNovlePath(), files);
         for (File f :
                 files) {
+            if (!StringUnits.isCorrectFileName(f.getName())) {
+                showDialog("错误","检测到有非动漫之家下载的小说文件，请先清空已下载的小说，重新从动漫之家下载后重试");
+                Log.d(TAG, "文件名不合法"+f.getName());
+                return;
+            }
             ChapterInfo.getChapterInfoList().add(new ChapterInfo(f));
         }
         //开始遍历待请求标识并请求,在Pre中获取needParsing，不会请求重复id
@@ -133,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
+
     //初始化控件
     private void initView() {
         Toolbar mToolbarMain = (Toolbar) findViewById(R.id.toolbar_main);
@@ -178,12 +185,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FileUnit.deleteFile(Paths.getPaths().getDmzjNovlePath());
+                        FileUnit.createDir(Paths.getPaths().getDmzjNovlePath());
+                        init();
                         toast("删除成功");
                     }
                 });
                 builder.setNegativeButton("取消", null);
                 builder.setTitle("提示");
                 builder.show();
+
                 break;
         }
     }
@@ -198,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //初始化状态,防止添加到RecyclerView重复
     private void init() {
         successTimes = 0;
+        if (PreToParsing.getNeedParsing()!=null) PreToParsing.clearNeedParsing();
         if (ChapterInfo.getChapterInfoList() != null) ChapterInfo.clearChapterInfo();
     }
 
@@ -277,5 +288,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return false;
+    }
+
+    public void showDialog(String title,String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("确定", null);
+        builder.show();
     }
 }

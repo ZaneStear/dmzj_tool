@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">动漫之家小说提取</string>
+    <string name="app_name">动漫之家提取</string>
     <string name="open_drawer">open drawer</string>
     <string name="close_drawer">close drawer</string>
     <string name="use">How To Use</string>
     <string name="novel_name">生成小说文件的名称</string>
     <string name="final_path">生成路径（默认：根目录/0dmzj/）</string>
+    <string name="menu_question">问题反馈(更新在贴吧发布@吐泡泡great)</string>
+    <string name="use_title">怎么使用？</string>
+    <string name="use_content">1-先在动漫之家下载想要提取的小说\n\n2-输入名称，点纸飞机，进入选择界面选择\n\n3-筛选，最后生成，生成位置：根目录/0_fetch</string>
+    <string name="delete_reason_title">为什么要删除已下载小说</string>
+    <string name="delete_reason_content">动漫之家下载的小说太多的话，每次提取都要手动筛选\n\n建议先清空原来下载的小说，再提取</string>
 </resources>

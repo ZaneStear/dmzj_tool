@@ -1,16 +1,22 @@
 package com.mirroring.bean;
 
+import android.util.Log;
+
 import com.mirroring.units.FileUnit;
 import com.mirroring.units.HttpUnits;
+import com.mirroring.units.StringUnits;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static com.mirroring.activities.MainActivity.TAG;
 
 /**
  * 从本地文件遍历得来的所有章节信息，最后用来和json比对
  */
-public class ChapterInfo {
+public class ChapterInfo implements Comparable<ChapterInfo>{
     //用来保存所有的chapter
     private static List<ChapterInfo> chapterInfoList;
 
@@ -27,6 +33,7 @@ public class ChapterInfo {
         this.chapterName = file.getName();
         this.file = file;
         this.chapterContent = FileUnit.readFile(file.getAbsolutePath());
+
         String[] strings = chapterName.split("_");
         firstNum = strings[0];
         secondNum = strings[1];
@@ -42,6 +49,7 @@ public class ChapterInfo {
      */
     public static List<ChapterInfo> getChapterInfoList() {
         if (chapterInfoList==null) chapterInfoList = new ArrayList<>();
+        Collections.sort(chapterInfoList);
         return chapterInfoList;
     }
 
@@ -79,5 +87,15 @@ public class ChapterInfo {
 
     public static void clearChapterInfo() {
         chapterInfoList.clear();
+    }
+
+    @Override
+    public int compareTo(ChapterInfo o) {
+        if (this.chapterName.compareTo(o.getChapterName())>0) {
+            return 1;
+        }else if (this.chapterName.compareTo(o.getChapterName())<0){
+            return -1;
+        }
+        return 0;
     }
 }

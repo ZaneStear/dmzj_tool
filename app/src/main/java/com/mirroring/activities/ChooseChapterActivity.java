@@ -85,7 +85,7 @@ public class ChooseChapterActivity extends AppCompatActivity implements View.OnC
                     //如果这章的id和当前文件的lastNu一样,说明找到这章的名字了
                     if (lastNum == chaptersBean.getChapter_id()) {
                         //替换名称，小说名+卷名+章名
-                        chapterInfo.setChapterName(novelName + " " + juan + " " + chaptersBean.getChapter_name());
+                        chapterInfo.setChapterName(novelName + "\n" + juan + "\n" + chaptersBean.getChapter_name());
                     }
                 }
             }
