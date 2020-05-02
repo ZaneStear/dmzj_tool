@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<String> list = PreToParsing.getNeedParsing();
         //没有找到文件
         if (list.size() == 0) {
-            toast("没找到任何下载的小说，请先去动漫之家下载");
+            toast("没有小说，请先去动漫之家下载");
             return;
         }
         for (String s :
@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getTitle().equals("问题反馈")) {
+        if (item.getItemId()==R.id.menu_question) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("作者：贴吧@吐泡泡great\n\n遇到问题请及时反馈以更新\n\n2020.5");
             builder.setPositiveButton("复制QQ号", new DialogInterface.OnClickListener() {
