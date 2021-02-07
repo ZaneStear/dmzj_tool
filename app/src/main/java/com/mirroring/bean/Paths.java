@@ -23,7 +23,7 @@ public class Paths {
         if (paths == null) {
             String root = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
             paths = new Paths(root,
-                    root + "Android/data/com.dmzj.manhua/files/dmzj/Document/",
+                    root + "Android/data/com.dmzjsq.manhua/files/dmzjsq/Document/",
                     root+"0_fetch/");
         }
 
